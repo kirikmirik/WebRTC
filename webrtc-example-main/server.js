@@ -9,7 +9,7 @@ const server = http.Server(app);
 // Map HTML and Javascript files as static
 app.use(express.static('public'));
 
-// Init Socket IO Server
+// Инициализация Socket IO Сервера
 const io = socketio(server);
 
 

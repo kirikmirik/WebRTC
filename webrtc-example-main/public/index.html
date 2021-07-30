@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <link rel="shortcut icon" href="#" /> -->
+    <!-- <link rel="shortcut icon" href="#" /> в игнор favicon.ico-->
     <link rel="icon" href="/favicon.ico" />
     <meta charset="UTF-8">
     <title>WebRTC Example</title>
@@ -23,22 +23,22 @@
     <script src="/main.js" type="module"></script>
 </head>
     <body>
-      <h1>Hello!</h1>
+      <h1>Ля, как могу</h1>
 
-      <!-- My Video and Remote Video from connection -->
+      <!-- моё видео и удалённые -->
     <div id="video-grid">
         <video playsinline autoplay muted id="local-video"></video>
         <video playsinline autoplay id="remote-video"></video>
     </div>
 
-    <!-- Input to send messages -->
+    <!-- плашка ввода сообщения -->
     <div>
-        <span style="font-weight: bold">Message: </span>
-        <input type="text" id="message-input" title="Message to Send!">
-        <button id="message-button">Send</button>
+        <span style="font-weight: bold">Сообщение: </span>
+        <input type="text" id="message-input" title="Введите сообщение">
+        <button id="message-button">Отправить</button>
     </div>
 
-    <!-- Area to Print Images -->
+    <!-- вывод сообщений -->
     <div class="messages"></div>
     </body>
 </html>

@@ -1,6 +1,6 @@
 console.log('Main JS!');
 
-// Map All HTML Elements
+// Все HTML элементы
 const videoGrid = document.getElementById('video-grid');
 const messagesEl = document.querySelector('.messages');
 const messageInput = document.getElementById('message-input');
@@ -14,14 +14,14 @@ const logMessage = (message) => {
   messagesEl.appendChild(newMessage);
 };
 
-// Open Camera To Capture Audio and Video
+// запись видео и аудио
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
   .then(stream => {
-    // Show My Video
+    // показать моё видео
     videoGrid.style.display = 'grid';
     localVideo.srcObject = stream;
 
-    // Start a Peer Connection to Transmit Stream
+    // начать peer подключение
     initConnection(stream);
   })
   .catch(error => console.log(error));
@@ -33,7 +33,7 @@ const initConnection = (stream) => {
   let localChannel;
   let remoteChannel;
 
-  // Start a RTCPeerConnection to each client
+  // начать RTCPeerConnection каждого клиента
   socket.on('other-users', (otherUsers) => {
     // Ignore when not exists other users connected
     if (!otherUsers || !otherUsers.length) return;
