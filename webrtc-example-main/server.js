@@ -63,5 +63,5 @@ app.get('/', (req, res) => {
 });
 
 // Start server in port 3000 or the port passed at "PORT" env variable
-server.listen(process.env.PORT || 8080,
-  () => console.log('Server Listen On: *:', process.env.PORT || 8080));
+server.listen(process.env.PORT || 3000,
+  () => console.log('Server Listen On: *:', process.env.PORT || 3000));
