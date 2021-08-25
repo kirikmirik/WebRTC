@@ -1,6 +1,10 @@
 console.log('Main JS!');
 
+<<<<<<< Updated upstream
 // Map All HTML Elements
+=======
+// Все HTML элементы
+>>>>>>> Stashed changes
 const videoGrid = document.getElementById('video-grid');
 const messagesEl = document.querySelector('.messages');
 const messageInput = document.getElementById('message-input');
@@ -14,6 +18,7 @@ const logMessage = (message) => {
   messagesEl.appendChild(newMessage);
 };
 
+<<<<<<< Updated upstream
 // Open Camera To Capture Audio and Video
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
   .then(stream => {
@@ -22,6 +27,16 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     localVideo.srcObject = stream;
 
     // Start a Peer Connection to Transmit Stream
+=======
+// запись видео и аудио
+navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  .then(stream => {
+    // показать моё видео
+    videoGrid.style.display = 'grid';
+    localVideo.srcObject = stream;
+
+    // начать peer подключение
+>>>>>>> Stashed changes
     initConnection(stream);
   })
   .catch(error => console.log(error));
@@ -33,7 +48,11 @@ const initConnection = (stream) => {
   let localChannel;
   let remoteChannel;
 
+<<<<<<< Updated upstream
   // Start a RTCPeerConnection to each client
+=======
+  // начать RTCPeerConnection
+>>>>>>> Stashed changes
   socket.on('other-users', (otherUsers) => {
     // Ignore when not exists other users connected
     if (!otherUsers || !otherUsers.length) return;
@@ -60,11 +79,11 @@ const initConnection = (stream) => {
     localChannel = localConnection.createDataChannel('chat_channel');
 
     // Function Called When Receive Message in Channel
-    localChannel.onmessage = (event) => logMessage(`Receive: ${event.data}`);
+    localChannel.onmessage = (event) => logMessage(`Получено: ${event.data}`);
     // Function Called When Channel is Opened
-    localChannel.onopen = (event) => logMessage(`Channel Changed: ${event.type}`);
+    localChannel.onopen = (event) => logMessage(`Канал связи: ${event.type}`);
     // Function Called When Channel is Closed
-    localChannel.onclose = (event) => logMessage(`Channel Changed: ${event.type}`);
+    localChannel.onclose = (event) => logMessage(`Канал связи: ${event.type}`);
 
     // Create Offer, Set Local Description and Send Offer to other users connected
     localConnection
@@ -104,11 +123,11 @@ const initConnection = (stream) => {
       console.log('\n remoteConnection remoteChannel')
 
       // Function Called When Receive Message in Channel
-      remoteChannel.onmessage = (event) => logMessage(`Receive: ${event.data}`);
+      remoteChannel.onmessage = (event) => logMessage(`Получено: ${event.data}`);
       // Function Called When Channel is Opened
-      remoteChannel.onopen = (event) => logMessage(`Channel Changed: ${event.type}`);
+      remoteChannel.onopen = (event) => logMessage(`Канал связи: ${event.type}`);
       // Function Called When Channel is Closed
-      remoteChannel.onclose = (event) => logMessage(`Channel Changed: ${event.type}`);
+      remoteChannel.onclose = (event) => logMessage(`Канал связи: ${event.type}`);
     }
 
     // Set Local And Remote description and create answer
@@ -140,7 +159,7 @@ const initConnection = (stream) => {
     // Clean input
     messageInput.value = '';
     // Log Message Like Sended
-    logMessage(`Send: ${message}`);
+    logMessage(`Послано: ${message}`);
 
     // GET the channel (can be local or remote)
     const channel = localChannel || remoteChannel;
