@@ -18,7 +18,18 @@ const io = socketio(server);
 var os = require('os');
 var ifaces = os.networkInterfaces();
 
+var ip = '<%=request.getRemoteHost();%>'; // для получения локального IP
+// Network interfaces
+var ifaces = require('os').networkInterfaces();
 
+// Iterate over interfaces ...
+var adresses = Object.keys(ifaces).reduce(function (result, dev) {
+  return result.concat(ifaces[dev].reduce(function (result, details) {
+    return result.concat(details.family === 'IPv4' && !details.internal ? [details.address] : []);
+  }, []));
+});
+// Print the result
+console.log(adresses)
 
 
 // Array to map all clients connected in socket
@@ -64,4 +75,7 @@ app.get('/', (req, res) => {
 
 // Start server in port 3000 or the port passed at "PORT" env variable
 server.listen(process.env.PORT || 3000,
-  () => console.log('Server Listen On: *:', process.env.PORT || 3000));
+  function onListen() {
+  var address = server.address();
+  console.log('Server listening on: http://localhost:%d', address.port);
+ });
